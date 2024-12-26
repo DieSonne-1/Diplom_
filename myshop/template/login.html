@@ -1,0 +1,22 @@
+<!--Прописываем использование полей формы
+    Включаем CSRF-токен для защиты приложения
+    Перебираем поля формы, выводим сначала имя формы, а затем поле для ввода
+    Добавляем кнопку входа и ссылку на страницу регистрации-->
+
+{% extends 'main_page.html' %}
+
+{% block content %}
+<div class="login">
+<h1>Вход в аккаунт</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <p>{{ field.label }}: <br> {{ field }}</p>
+    {% endfor %}
+    <button type="submit">Вход</button>
+</form>
+<br>
+<p>Ещё нет аккаунта? <a href="http://127.0.0.1:8000/register/">Зарегестрироваться</a></p>
+</div>
+{% endblock %}

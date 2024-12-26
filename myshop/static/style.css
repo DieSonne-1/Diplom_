@@ -1,0 +1,48 @@
+body {
+  background-color: #cadefc;
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
+  background-color: #cca8e9;
+  text-align: right;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 100px;
+}
+
+.menu li a {
+  font-family: Comic Sans MS;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 2px solid transparent;
+}
+
+.menu li a:hover {
+  color: #FFD700;
+  border-bottom: 2px solid #FFD700;
+}
+
+.container {
+  font-family: Comic Sans MS;
+  max-width: 1000px;
+  border: 10px ridge lightblue;
+  text-align: center;
+  margin: 100px 150px;
+}
+
+.shop {
+  font-family: Comic Sans MS;
+}
+
+.register {
+  font-family: Comic Sans MS;
+}
+
+.login {
+  font-family: Comic Sans MS;
+}

@@ -1,0 +1,54 @@
+<!--Создаём шаблон главной страницы
+    Создаём меню навигации и футер
+    Добавляем ссылку на статические файлы и определяем пусть к ним-->
+
+<!--Добавляем условие if user.is_authenticated , чтобы проверить авторизирован ли пользователь.
+    Если да, отобразится приветствие и ссылка на вход,
+    а если нет- то появятся ссылки на страницы входа и регистарции-->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="menu">
+    <img src="/media/logo.png" style="width: 90px" align=left>
+    <nav>
+        <ul>
+            <li><h3><a href="http://127.0.0.1:8000">Главная </a></h3></li>
+            <li><h3><a href="http://127.0.0.1:8000/login/">Вход в аккаунт</a></h3></li>
+            <li><h3><a href="http://127.0.0.1:8000/register/">Регистрация </a></h3></li>
+            <li><h3><a href="http://127.0.0.1:8000/shop/">Магазин </a></h3></li>
+            <li><h3><a href="http://127.0.0.1:8000/cart/">Корзина </a></h3></li>
+            <li><h3><a href="http://127.0.0.1:8000/logout/">Выйти</a></h3></li>
+        </ul>
+    </nav>
+</div>
+
+{% block content %}
+<div class="container">
+
+    <h2>Главная страница</h2>
+    {% if user.is_authenticated %}
+    <p>Добро пожаловать, {{ user.username }}! <a href="http://127.0.0.1:8000/logout/">Выйти</a></p>
+    {% else %}
+    <p><a href="http://127.0.0.1:8000/login/">Войти</a> | <a
+            href="http://127.0.0.1:8000/register/">Зарегистрироваться</a></p>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+<br>
+
+<footer>
+    <h3>Bookstore</h3>
+    <p><h5>&copy; Copyright 2024. All Rights Reserved</h5></p>
+</footer>
+</body>
+</html>

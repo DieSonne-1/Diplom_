@@ -1,0 +1,47 @@
+<!--Создаём шаблон страницы магазина, применяем extends для наследование главной страницы
+    Создаём блок цикла for, в котором будет выводить поля модели продукта-->
+
+<!--Создаём блок pagination для переключения между страницами-->
+
+{% extends 'main_page.html' %}
+{% block content %}
+<h2>Магазин</h2>
+<div class="shop">
+    <ul>
+        {% for p in page_obj %}
+        <li>
+            <p><b>{{ p.name }}</b></p>
+            <p><img src="/media/{{ p.image }}" style="width: 130px"></p>
+            <p>{{ p.description }}</p>
+            <p>{{ p.price }}</p>
+            <a href="#" class="buy-now-button">Купить сейчас</a>
+            <a class="buy-now-button" href="{% url 'cart:add_to_cart' p.id %}">Добавить в корзину</a>
+            <hr color="#7B68EE">
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="pagination">
+
+    {% if page_obj.has_previous %}
+    <a href="?page=1">Первая</a>
+    <a href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+    {% endif %}
+
+    <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}
+        </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">Следующая</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
+    {% endif %}
+
+</div>
+
+<br>
+
+<a href="http://127.0.0.1:8000">
+    <button>Вернуться на главную страницу</button>
+</a>
+{% endblock %}

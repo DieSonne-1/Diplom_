@@ -1,0 +1,26 @@
+<!--Прописываем использование полей формы
+    Включаем CSRF-токен для защиты приложения
+    Перебираем поля формы, выводим сначала имя формы, а затем поле для ввода
+    Также используем следующий цикл for для вывода ошибок
+    Добавляем кнопку регистрации пользователя-->
+
+{% extends 'main_page.html' %}
+
+{% block content %}
+<div class="register">
+<h2>Регистрация</h2>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        <p>{{ field.label }}: <br> {{ field }}</p>
+
+        {% for error in field.errors %}
+        <small style="color: red">{{ error }}</small>
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <button name="register" type="submit">Зарегестрироваться</button>
+</form>
+</div>
+{% endblock %}
